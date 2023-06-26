@@ -1,15 +1,27 @@
 use std::env;
-use std::fs;
+pub mod lib;
+use lib::run;
 fn main() {
     let args: Vec<String> = env::args().collect();
     dbg!(&args);
-    let query = &args[1];
-    let location = &args[2];
+    let config  = Config::new(&args);
 
-    println!("Searching for {query} in {location}");
-
-    let contents = fs::read_to_string(location)
-        .expect("Should have been able to read the file!");
-
-    println!("With text:\n{contents}");
+    let query = config.query;
+    let location = config.location;
+    run(query, location);
 }
+
+struct Config {
+    query: String,
+    location: String
+}
+
+impl Config {
+    fn new(args: &[String]) -> Config {
+        let query = args[1].clone();
+        let location = args[2].clone();
+
+        Config {query, location}
+    }
+}
+
