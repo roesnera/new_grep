@@ -3,7 +3,6 @@ pub mod lib;
 use lib::run;
 fn main() {
     let args: Vec<String> = env::args().collect();
-    dbg!(&args);
     let config  = Config::new(&args);
 
     let query = config.query;
@@ -18,6 +17,9 @@ struct Config {
 
 impl Config {
     fn new(args: &[String]) -> Config {
+        if args.len() < 3 {
+            panic!("two arguments required");
+        }
         let query = args[1].clone();
         let location = args[2].clone();
 
