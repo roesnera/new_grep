@@ -1,11 +1,10 @@
 use std::fs;
-pub fn run(query: String, location: String) {
+//use crate::Config;
+//pub fn run(config: config) {
+//
+//    println!("searching for {config.query} in {config.location}");
+//    let contents = fs::read_to_string(config.location)
+//        .expect("should have been able to read the file!");
 
-
-
-    println!("Searching for {query} in {location}");
-    let contents = fs::read_to_string(location)
-        .expect("Should have been able to read the file!");
-
-    println!("With text:\n{contents}");
-}
+//    println!("with text:\n{contents}");
+//}
